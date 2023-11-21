@@ -18,8 +18,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// if(builder.Environment.IsDevelopment()) {
+//     app.UseDeveloperExceptionPage(); //to get rid of Object reference not set to instance of object in dev mode
+// }
+
 
 // Configure the HTTP request pipeline.
+//middleware should be at top always
+app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
