@@ -17,6 +17,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { GalleryModule } from 'ng-gallery';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { GalleryModule } from 'ng-gallery';
     RegisterComponent,
     MemberCardComponent,
     MemberListComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     RouterModule,
@@ -41,7 +44,8 @@ import { GalleryModule } from 'ng-gallery';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
