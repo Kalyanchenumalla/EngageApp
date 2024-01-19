@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './_modules/shared.module';
@@ -20,6 +20,8 @@ import { GalleryModule } from 'ng-gallery';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     MemberListComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TextInputComponent,
+    DatePickerComponent
   ],
   imports: [
     RouterModule,
@@ -42,7 +46,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     BrowserAnimationsModule,
     FormsModule,
     SharedModule,
-    GalleryModule
+    GalleryModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
