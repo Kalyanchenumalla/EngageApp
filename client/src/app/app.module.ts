@@ -19,6 +19,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { GalleryModule } from 'ng-gallery';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     MemberCardComponent,
     MemberListComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     RouterModule,
