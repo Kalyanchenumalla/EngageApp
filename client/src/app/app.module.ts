@@ -25,6 +25,10 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 
 
 @NgModule({
@@ -42,7 +46,11 @@ import { MemberMessagesComponent } from './members/member-messages/member-messag
     MemberEditComponent,
     PhotoEditorComponent,
     TextInputComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    HasRoleDirective,
+    AdminPanelComponent,
+    UserManagementComponent,
+    PhotoManagementComponent
   ],
   imports: [
     RouterModule,
