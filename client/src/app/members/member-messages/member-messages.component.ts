@@ -12,29 +12,33 @@ export class MemberMessagesComponent {
   @ViewChild('messageForm') messageForm?: NgForm
   //this is a child of member detail
   @Input() username?: string;
-  @Input() messages: Message[] = [];
+  // @Input() messages: Message[] = [];
   messageContent = '';
-  constructor(private messageService: MessageService) {}
+  constructor(public messageService: MessageService) {}
 
   ngOnInit() {
-    this.loadMessages();
+    // this.loadMessages();
   }
 
-  loadMessages() {
-    if(this.username) {
-      this.messageService.getMessageThread(this.username).subscribe({
-        next: messages => this.messages = messages
-      })
-    }
-  }
+  // loadMessages() {
+  //   if(this.username) {
+  //     this.messageService.getMessageThread(this.username).subscribe({
+  //       next: messages =>
+  //        this.messages = messages
+  //       console.log(messages)
+  //     })
+  //   }
+  // }
 
   sendMessage() {
     if(!this.username) return;
-    this.messageService.sendMessage(this.username, this.messageContent).subscribe({
-      next: message => {
-        this.messages.push(message);
-        this.messageForm?.reset()
-      }
+    this.messageService.sendMessage(this.username, this.messageContent).then(() => {
+      this.messageForm?.reset();
     })
+      // next: message => {
+        // this.messages.push(message);
+        // this.messageForm?.reset()
+      // }
+    
   }
 }

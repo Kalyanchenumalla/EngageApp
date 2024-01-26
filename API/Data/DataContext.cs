@@ -10,6 +10,8 @@ public class DataContext : IdentityDbContext<AppUser, AppRole, int, IdentityUser
     // public DbSet<AppUser> Users { get; set; } int is used for ids here
     public DbSet<UserLike> Likes { get; set; }
     public DbSet<Message> Messages { get; set; }
+    public DbSet<Group> Groups { get; set; }
+    public DbSet<Connection> Connections { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -17,7 +19,7 @@ public class DataContext : IdentityDbContext<AppUser, AppRole, int, IdentityUser
         builder.Entity<AppRole>().HasMany(ur => ur.UserRoles).WithOne(u => u.Role).HasForeignKey(ur => ur.RoleId).IsRequired();
         builder.Entity<UserLike>().HasKey(k => new {k.SourceUserId, k.TargetUserId}); //lisa 
         builder.Entity<UserLike>().HasOne(s => s.SourceUser).WithMany(l => l.LikedUsers).HasForeignKey(s => s.SourceUserId).OnDelete(DeleteBehavior.Cascade);//peter
-        builder.Entity<UserLike>().HasOne(s => s.TargetUser).WithMany(l => l.LikedByUsers).HasForeignKey(s => s.TargetUserId).OnDelete(DeleteBehavior.NoAction); //for sqlexplorer server we need to change it to noaction other than sqlite, this can be cascade 
+        builder.Entity<UserLike>().HasOne(s => s.TargetUser).WithMany(l => l.LikedByUsers).HasForeignKey(s => s.TargetUserId).OnDelete(DeleteBehavior.Cascade); //for sqlexplorer server we need to change it to noaction other than sqlite, this can be cascade 
         //lisa decides to like peter
 
         //,=many to many relationships

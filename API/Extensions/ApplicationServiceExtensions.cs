@@ -20,6 +20,8 @@ public static class ApplicationServiceExtensions
         services.AddScoped<LogUserActivity>();
         services.AddScoped<ILikesRepository, LikesRepository>();
         services.AddScoped<IMessageRepository, MessageRepository>();
+        services.AddSignalR();
+        services.AddSingleton<PresenceTracker>();
 
         return services;
         //we need to add all the services here 

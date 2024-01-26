@@ -37,11 +37,15 @@ app.UseHttpsRedirection();
 
 // app.UseAuthorization();
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200"));
 
 app.UseAuthentication(); //to have id valid 18 yrs checks
 app.UseAuthorization(); //ok you have id
+
 app.MapControllers();
+
+app.MapHub<PresenceHub>("hubs/presence");
+app.MapHub<MessageHub>("hubs/message");
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 try{
@@ -49,6 +53,8 @@ try{
     var userManager = services.GetRequiredService<UserManager<AppUser>>();
     var roleManaeger = services.GetRequiredService<RoleManager<AppRole>>();
     await context.Database.MigrateAsync();
+    // context.Connections.RemoveRange(context.Connections); //this is used for small scale tables not for 1000s 
+    await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");
     await Seed.SeedUsers(userManager, roleManaeger);
 }
 catch(Exception ex) {

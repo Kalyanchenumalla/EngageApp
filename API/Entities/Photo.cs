@@ -9,7 +9,7 @@ public class Photo
     public string Url { get; set; }
     public bool IsMain { get; set; } //specifies users main photo
     public string PublicId { get; set; } // to upload photo 
-    public int AppUserId { get; set; }
     public AppUser AppUser { get; set; }
+    public int AppUserId { get; set; }
 
 }

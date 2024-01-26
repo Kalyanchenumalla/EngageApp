@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(): void {
     this.initializeForm();
+    this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() -15);
   }
 
@@ -49,6 +50,7 @@ export class RegisterComponent implements OnInit{
   register() {
     // console.log(this.registerForm?.value);
     const dob = this.getDateOnly(this.registerForm.controls['dateOfBirth'].value);
+    console.log(dob);
     const values = {...this.registerForm.value, dateOfBirth: dob};
     console.log(values);
     

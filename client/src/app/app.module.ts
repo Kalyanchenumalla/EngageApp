@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './_modules/shared.module';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
-import { RouterModule } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
@@ -29,6 +29,7 @@ import { HasRoleDirective } from './_directives/has-role.directive';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { CustomRouteReuseStrategy } from './_services/customRouteReuseStrategy';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { PhotoManagementComponent } from './admin/photo-management/photo-managem
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+    {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
   ],
   bootstrap: [AppComponent]
 })
