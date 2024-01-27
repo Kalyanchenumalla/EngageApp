@@ -9,9 +9,11 @@ public class LogUserActivity : IAsyncActionFilter
         var resultContext = await next();
         if(!resultContext.HttpContext.User.Identity.IsAuthenticated) return;
         var userId = resultContext.HttpContext.User.GetUserId();
-        var repo = resultContext.HttpContext.RequestServices.GetService<IUserRepository>();
-        var user = await repo.GetUserByIdAsync(userId);
+        // var repo = resultContext.HttpContext.RequestServices.GetService<IUserRepository>();
+        var uow = resultContext.HttpContext.RequestServices.GetService<IUnitOfWork>();
+        var user = await uow.UserRepository.GetUserByIdAsync(userId);
         user.LastActive = DateTime.UtcNow;
-        await repo.SaveAllAsync();//to update database
+        // await repo.SaveAllAsync();//to update database
+        await uow.Complete();//to update database
     }
 }

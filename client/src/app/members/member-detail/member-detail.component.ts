@@ -43,6 +43,8 @@ export class MemberDetailComponent implements OnInit, OnDestroy{
         params['tab'] && this.selectTab(params['tab'])
       }
     })
+
+    this.getImages();
   }
 
   ngOnDestroy(): void {
@@ -87,8 +89,9 @@ export class MemberDetailComponent implements OnInit, OnDestroy{
 
   getImages() {
     if(!this.member) return;
-    for(const photo of this.member?.photos) {
+    for(const photo of this.member.photos) {
       this.images.push(new ImageItem({src: photo.url, thumb: photo.url}));
+      console.log(this.member.photos);
     }
   }
 }
