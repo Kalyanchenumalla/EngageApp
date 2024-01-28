@@ -31,11 +31,11 @@
                 <td class="mt-3">{{message.content}}</td>
                 <td class="mt-3">
                     <div *ngIf="container === 'Outbox'">
-                        <img class="img-circle rounded-circle me-2" src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="recipient-photo">
+                        <!-- <img class="img-circle rounded-circle me-2" src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="recipient-photo"> -->
                         <strong>{{message.recipientUsername | titlecase}}</strong>
                     </div>
                     <div *ngIf="container !== 'Outbox'">
-                        <img class="img-circle rounded-circle me-2" src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="sender-photo">
+                        <!-- <img class="img-circle rounded-circle me-2" src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="sender-photo"> -->
                         <strong>{{message.senderUsername| titlecase}}</strong>
                     </div>
                 </td>

@@ -15,8 +15,8 @@
             <!-- <li *ngFor="let message of messages"> -->
                 <div>
                     <span class="chat-img float-end">
-                        <!-- <img class="rounded-circle" src="{{message.recipientPhotoUrl}}" alt="image of user"> -->
-                        <p class="rounded-circle">{{message.senderUsername}}</p>
+                        <!-- <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="image of user"> -->
+                        <p class="float-end">{{'(' + message.senderUsername + ')' | titlecase}}</p>
                     </span>
                     <div class="chat-body">
                         <div class="header">
