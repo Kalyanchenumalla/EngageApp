@@ -50,9 +50,9 @@ export class RegisterComponent implements OnInit{
   register() {
     // console.log(this.registerForm?.value);
     const dob = this.getDateOnly(this.registerForm.controls['dateOfBirth'].value);
-    console.log(dob);
+    // console.log(dob);
     const values = {...this.registerForm.value, dateOfBirth: dob};
-    console.log(values);
+    // console.log(values);
     
     this.accountService.register(values).subscribe({
       next: () => {

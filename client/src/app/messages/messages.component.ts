@@ -27,9 +27,9 @@ export class MessagesComponent implements OnInit {
     this.messageService.getMessages(this.pageNumber, this.pageSize, this.container).subscribe({
       next: response => {
         this.messages = response.result;
-        console.log(this.messages)
+        // console.log(this.messages)
         this.pagination = response.pagination;
-        console.log(this.pagination)
+        // console.log(this.pagination)
         this.loading = false;
       }
     })
@@ -39,7 +39,7 @@ export class MessagesComponent implements OnInit {
     this.messageService.deleteMessage(id).subscribe({
       next: () => this.messages?.splice(this.messages.findIndex(m => m.id === id),1)
     })
-    console.log(id)
+    // console.log(id)
   }
 
   pageChanged(event: any) {
