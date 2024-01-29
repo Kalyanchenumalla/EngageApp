@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for engageapp on 2024-01-29T14:15:24+05:30
+# fly.toml app configuration file generated for engage-app-site on 2024-01-29T13:59:17+05:30
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -6,16 +6,17 @@
 app = 'engageapp'
 primary_region = 'arn'
 
-[experimental]
-  auto_rollback = true
-
 [build]
   image = 'kalyanchenu/engageapp:latest'
 
 [env]
-  ASPNETCORE_URLS = 'http://+:8080'
-  CloudinarySettings__ApiKey = '537313823255192'
-  CloudinarySettings__CloudName = 'dwwnkyi4m'
+  ASPNETCORE_URLS="http://+:8080"
+  CloudinarySettings__CloudName="dwwnkyi4m"
+  CloudinarySettings_ApiKey="537313823255192"
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
 
 [http_service]
   internal_port = 8080
